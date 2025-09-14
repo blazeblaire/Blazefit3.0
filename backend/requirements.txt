@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pandas
+numpy
+scikit-learn
+torch
+opencv-python
+# mediapipe; platform_system!='Windows' or platform_machine!='x86'
+joblib
+python-multipart
