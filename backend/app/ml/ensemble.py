@@ -2,7 +2,7 @@
 import joblib
 import torch
 import numpy as np
-from train_rnn import SimpleRNN
+from .train_rnn import SimpleRNN
 
 def predict_rnn(seq, model_path='rnn_model.pth'):
     model = SimpleRNN(n_features=seq.shape[1])

@@ -4,9 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 
 # ML imports (existing)
-from ml.ensemble import ensemble_predict
-from ml.video_features import extract_pose_features
-
+from backend.app.ml.ensemble import ensemble_predict
+from backend.app.ml.video_features import extract_pose_features
 app = FastAPI()
 
 # ✅ Allow mobile app requests (important!)
