@@ -11,15 +11,15 @@ app = FastAPI()
 # ✅ Allow mobile app requests (important!)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # In production, restrict to your mobile device IP/domain
+    allow_origins=["*"],   
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# -------------------------
+
 # Existing video upload route
-# -------------------------
+
 @app.post('/upload_video/')
 async def upload_video(file: UploadFile = File(...)):
     path = f'/tmp/{file.filename}'
@@ -31,9 +31,9 @@ async def upload_video(file: UploadFile = File(...)):
     pred = ensemble_predict(seq, list(flat.values()))
     return JSONResponse({'predicted_time': float(pred)})
 
-# -------------------------
+
 # New: Injury Risk Prediction
-# -------------------------
+
 @app.post('/predict_injury')
 async def predict_injury(payload: dict):
     # Mock logic for now
@@ -50,9 +50,9 @@ async def predict_injury(payload: dict):
 
     return {"prediction": risk}
 
-# -------------------------
+
 # New: Training Plan
-# -------------------------
+
 @app.post('/plan_training')
 async def plan_training(payload: dict):
     athlete_id = payload.get("athlete_id", 0)
@@ -64,9 +64,9 @@ async def plan_training(payload: dict):
     ]
     return {"athlete_id": athlete_id, "plan": plan}
 
-# -------------------------
+
 # Health Check
-# -------------------------
+
 @app.get('/health')
 def health():
     return {'status':'ok'}
